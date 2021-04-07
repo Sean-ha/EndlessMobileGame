@@ -28,7 +28,7 @@ public class GameStats : ISerializable
     {
         playerDamage = 3;
         currentEXP = 0;
-        currentStage = 1;
+        currentStage = 10000;
         maxStage = 1;
 
         CalculateStageValues();
