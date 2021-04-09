@@ -28,7 +28,7 @@ public class Shooter : MonoBehaviour
     // Initiates a "shoot"
     public void Shoot(float angle)
     {
-        shaker.ShakeCameraDirectional(0.08f, angle);
+        shaker.ShakeCameraDirectional(0.06f, angle);
 
         currAngle = angle;
         onShoot.Invoke();
@@ -36,7 +36,7 @@ public class Shooter : MonoBehaviour
         // Create shot effect
         GameObject eff = op.Create("ShootEffect", barrelTip.position, Quaternion.AngleAxis(angle, Vector3.forward));
 
-        StartCoroutine(Disable(eff, 0.05f));
+        StartCoroutine(Disable(eff, 0.03f));
     }
 
     private void ShootBullet()

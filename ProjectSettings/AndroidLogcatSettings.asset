@@ -1,10 +1,10 @@
 {
     "m_SelectedDeviceId": "LGH932313a3860",
     "m_SelectedPackage": {
-        "deviceId": "",
-        "name": "",
-        "processId": 0,
-        "exited": false
+        "deviceId": "LGH932313a3860",
+        "name": "com.SeansHome.com.unity.template.mobile2D",
+        "processId": 23495,
+        "exited": true
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
@@ -13,6 +13,48 @@
             "name": "com.lge.launcher3",
             "processId": 4234,
             "exited": false
+        },
+        {
+            "deviceId": "LGH932313a3860",
+            "name": "com.SeansHome.com.unity.template.mobile2D",
+            "processId": 14749,
+            "exited": true
+        },
+        {
+            "deviceId": "LGH932313a3860",
+            "name": "com.SeansHome.com.unity.template.mobile2D",
+            "processId": 15905,
+            "exited": false
+        },
+        {
+            "deviceId": "LGH932313a3860",
+            "name": "com.SeansHome.com.unity.template.mobile2D",
+            "processId": 19157,
+            "exited": false
+        },
+        {
+            "deviceId": "LGH932313a3860",
+            "name": "com.SeansHome.com.unity.template.mobile2D",
+            "processId": 20399,
+            "exited": false
+        },
+        {
+            "deviceId": "LGH932313a3860",
+            "name": "com.SeansHome.com.unity.template.mobile2D",
+            "processId": 22219,
+            "exited": true
+        },
+        {
+            "deviceId": "LGH932313a3860",
+            "name": "com.SeansHome.com.unity.template.mobile2D",
+            "processId": 22977,
+            "exited": true
+        },
+        {
+            "deviceId": "LGH932313a3860",
+            "name": "com.SeansHome.com.unity.template.mobile2D",
+            "processId": 23495,
+            "exited": true
         }
     ],
     "m_Tags": {
@@ -48,7 +90,7 @@
         ]
     },
     "m_MemoryViewerState": {
-        "MemoryWindowHeight": 300.0,
+        "MemoryWindowHeight": 255.0,
         "MemoryWindowWidth": 170.0,
         "MemoryTypeEnabled": [
             true,

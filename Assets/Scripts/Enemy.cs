@@ -6,6 +6,10 @@ public class Enemy : MonoBehaviour
 {
     private StatsManager sm;
     private CameraShake shaker;
+    private SpriteRenderer sr;
+
+    private Material whiteFlashMat;
+    private Material defaultMat;
 
     private double health;
     private double expToGive;
@@ -14,6 +18,9 @@ public class Enemy : MonoBehaviour
     {
         sm = StatsManager.instance;
         shaker = CameraShake.instance;
+        sr = GetComponent<SpriteRenderer>();
+        defaultMat = sr.material;
+        whiteFlashMat = GameData.instance.whiteFlashMat;
         OnSpawn();
     }
 
@@ -34,6 +41,8 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(double toTake)
     {
         shaker.ShakeCamera();
+        StartCoroutine(FlashWhite());
+
         health -= toTake;
         TextGenerator.instance.CreateDamageText(toTake.ToString(), (Vector2)transform.position - new Vector2(0, 0.3f));
         if (health <= 0)
@@ -45,8 +54,15 @@ public class Enemy : MonoBehaviour
     // Called when enemy is to die
     private void Die()
     {
-        // TODO: Give player EXP
+        sm.GainEnemyExp();
 
         Destroy(gameObject);
+    }
+
+    private IEnumerator FlashWhite()
+    {
+        sr.material = whiteFlashMat;
+        yield return new WaitForSeconds(0.1f);
+        sr.material = defaultMat;
     }
 }

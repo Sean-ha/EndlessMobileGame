@@ -49,10 +49,10 @@ public class CameraShake : MonoBehaviour
         float counter = 0f;
 
         //Shake Speed
-        const float speed = 0.08f;
+        const float speed = 0.1f;
 
         //Angle Rotation
-        const float angleRot = 0.08f;
+        const float angleRot = 0.05f;
 
         float decreasePoint = duration / 2;
 
@@ -64,7 +64,7 @@ public class CameraShake : MonoBehaviour
             float decreaseAngle = angleRot;
 
             //Shake camera
-            Vector3 tempPos = defaultPos + Random.insideUnitSphere * decreaseSpeed;
+            Vector3 tempPos = defaultPos + Random.insideUnitSphere * decreaseSpeed * 0.5f;
             tempPos.z = defaultPos.z;
             cam.position = tempPos;
 
@@ -108,7 +108,7 @@ public class CameraShake : MonoBehaviour
         //Shake Speed
         const float speed = 0.08f;
 
-        float decreasePoint = duration / 2;
+        float decreasePoint = duration / 2.5f;
 
         float xVal = Mathf.Sin(angle * Mathf.Deg2Rad);
         float yVal = Mathf.Cos(angle * Mathf.Deg2Rad);
@@ -121,14 +121,14 @@ public class CameraShake : MonoBehaviour
             float decreaseSpeed = speed;
 
             //Shake camera
-            Vector3 tempPos = defaultPos + dir * Random.Range(-1f, 1f) * decreaseSpeed;
+            Vector3 tempPos = defaultPos + dir * -0.6f * decreaseSpeed;
             tempPos.z = defaultPos.z;
             cam.position = tempPos;
 
             yield return null;
 
 
-            //Check if we have reached the decreasePoint then start decreasing  decreaseSpeed value
+            //Check if we have reached the decreasePoint then start decreasing decreaseSpeed value
             if (counter >= decreasePoint)
             {
                 //Reset counter to 0 
