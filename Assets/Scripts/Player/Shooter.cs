@@ -36,7 +36,7 @@ public class Shooter : MonoBehaviour
         // Create shot effect
         GameObject eff = op.Create("ShootEffect", barrelTip.position, Quaternion.AngleAxis(angle, Vector3.forward));
 
-        StartCoroutine(Disable(eff, 0.03f));
+        StartCoroutine(Disable(eff, 0.05f));
     }
 
     private void ShootBullet()

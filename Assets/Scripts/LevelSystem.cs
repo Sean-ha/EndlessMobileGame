@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelSystem : MonoBehaviour
 {
@@ -10,7 +11,9 @@ public class LevelSystem : MonoBehaviour
     private GameStats stats;
     private GameObject barFill;
 
-    private double displayEXP;
+    [SerializeField]
+    private Text levelText;
+
     private bool isFilling;
     // If the player should be levelling up
     private bool toLevel = false;
@@ -25,6 +28,8 @@ public class LevelSystem : MonoBehaviour
     {
         sm = StatsManager.instance;
         stats = sm.gameStats;
+
+        levelText.text = stats.currentLevel.ToString();
 
         // Sets the bar to the correct length on start
         barFill.transform.localScale = new Vector2((float)(stats.currentEXP / stats.expToLevel), 1);
@@ -60,7 +65,7 @@ public class LevelSystem : MonoBehaviour
         if (ratio >= 1)
         {
             toLevel = true;
-            LeanTween.scaleX(barFill, 1, 0.6f).setEaseOutExpo().setOnComplete(LevelUp);
+            LeanTween.scaleX(barFill, 1, 0.6f).setEaseOutQuad().setOnComplete(LevelUp);
         }
         else
         {
@@ -73,10 +78,12 @@ public class LevelSystem : MonoBehaviour
         isFilling = false;
     }
 
+    // When the bar is filled up completely
     private void LevelUp()
     {
         sm.LevelUp();
-        LeanTween.scaleX(barFill, (float)(stats.currentEXP / stats.expToLevel), 0.6f).setEaseOutQuad().setOnComplete(StopFilling);
+        levelText.text = stats.currentLevel.ToString();
+        LeanTween.scaleX(barFill, (float)(stats.currentEXP / stats.expToLevel), 0.4f).setEaseOutQuad().setOnComplete(StopFilling);
         toLevel = false;
     }
 }

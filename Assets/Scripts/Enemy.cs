@@ -5,8 +5,10 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     private StatsManager sm;
+    private StageSystem stageSystem;
     private CameraShake shaker;
     private SpriteRenderer sr;
+    private TextGenerator textGenerator;
 
     private Material whiteFlashMat;
     private Material defaultMat;
@@ -17,6 +19,7 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         sm = StatsManager.instance;
+        stageSystem = StageSystem.instance;
         shaker = CameraShake.instance;
         sr = GetComponent<SpriteRenderer>();
         defaultMat = sr.material;
@@ -55,6 +58,7 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         sm.GainEnemyExp();
+        stageSystem.OnEnemyDeath();
 
         Destroy(gameObject);
     }

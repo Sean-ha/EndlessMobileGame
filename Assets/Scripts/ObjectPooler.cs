@@ -32,7 +32,7 @@ public class ObjectPooler : MonoBehaviour
             Queue<GameObject> objectPool = new Queue<GameObject>();
 
             // DamageText must be instantiated as a child of a Canvas
-            if (pool.tag == "DamageText")
+            if (pool.tag == "WorldText")
             {
                 for (int i = 0; i < pool.size; i++)
                 {

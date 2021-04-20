@@ -19,6 +19,8 @@ public class GameStats : ISerializable
     public double enemyHealth;
     public double enemyEXP;
 
+    public int stageEnemyKills;
+
     public GameStats()
     {
         InitializeDefaultValues();
@@ -31,6 +33,7 @@ public class GameStats : ISerializable
         currentStage = 1;
         currentLevel = 1;
         maxStage = 1;
+        stageEnemyKills = 0;
 
         CalculateStageValues();
         CalculateLevelValues();
@@ -44,18 +47,21 @@ public class GameStats : ISerializable
             maxStage = currentStage;
         }
 
-        double enemHP = 4 + currentStage + Math.Pow(currentStage, 1.31);
+        double enemHP = 5 + currentStage + Math.Pow(currentStage, 1.31);
         enemyHealth = Math.Round(enemHP, 0, MidpointRounding.AwayFromZero);
 
-        double enemEXP = 2 + Math.Pow(maxStage, 1.11) + Math.Pow(currentStage, 1.17);
+        double enemEXP = 2 + Math.Pow(maxStage, 1.07) + Math.Pow(currentStage, 1.09);
         enemyEXP = Math.Round(enemEXP, 0, MidpointRounding.AwayFromZero);
     }
 
     // Recalculates all values that rely on the currentLevel. Formulas subject to change.
     public void CalculateLevelValues()
     {
-        double toLevel = 50 * Math.Pow(currentLevel, 0.83) + Math.Pow(currentLevel, 1.29);
+        double toLevel = 50 * Math.Pow(currentLevel, 1.03) + Math.Pow(currentLevel, 1.53);
         expToLevel = Math.Round(toLevel, 0, MidpointRounding.AwayFromZero);
+
+        double newDmg = 3 + Math.Pow(currentLevel, 1.35);
+        playerDamage = Math.Round(newDmg, 0, MidpointRounding.AwayFromZero);
     }
 
     // SERIALIZE DATA HERE (automatically called when serializing)
